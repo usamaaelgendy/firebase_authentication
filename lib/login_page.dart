@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
   final BaseAuth auth;
+  final VoidCallback onSignIn;
 
-  LoginPage({this.auth});
+  LoginPage({this.auth, this.onSignIn});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -121,6 +122,8 @@ class _LoginPageState extends State<LoginPage> {
                 .createAccountWithEmailAndPassword(_email, _password);
             print(userId);
           }
+          print(widget.onSignIn);
+          widget.onSignIn();
         } catch (e) {
           print("Error $e");
         }

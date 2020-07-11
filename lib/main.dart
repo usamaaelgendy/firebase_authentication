@@ -1,8 +1,7 @@
 import 'package:firebase_authentication/auth/auth.dart';
+import 'package:firebase_authentication/root/root_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Login ",
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPage(
+      home: RootPage(
         auth: Auth(),
       ),
     );
