@@ -1,7 +1,10 @@
 import 'package:firebase_authentication/auth/auth.dart';
+import 'package:firebase_authentication/home_page.dart';
 import 'package:firebase_authentication/login_page.dart';
 import 'package:flutter/material.dart';
 
+
+// todo : review video num 6
 class RootPage extends StatefulWidget {
   final BaseAuth auth;
 
@@ -24,16 +27,23 @@ class _RootPageState extends State<RootPage> {
     super.initState();
     widget.auth.currentUser().then((userId) {
       setState(() {
-//        _authStatus = userId == null ? AuthStatus.notSignIn : AuthStatus.signIn;
+        _authStatus = userId == null ? AuthStatus.notSignIn : AuthStatus.signIn;
       });
     });
   }
 
-  void _signedIn(){
+  void _signedIn() {
     setState(() {
       _authStatus = AuthStatus.signIn;
     });
   }
+
+  void _signedOut() {
+    setState(() {
+      _authStatus = AuthStatus.notSignIn;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (_authStatus) {
@@ -44,8 +54,9 @@ class _RootPageState extends State<RootPage> {
         );
         break;
       case AuthStatus.signIn:
-        return Container(
-          child: Text("hello"),
+        return HomePage(
+          auth: widget.auth,
+          onSignedOut: _signedOut,
         );
         break;
     }
