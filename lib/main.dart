@@ -1,3 +1,4 @@
+import 'package:firebase_authentication/auth/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter Login ",
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPage(),
+      home: LoginPage(
+        auth: Auth(),
+      ),
     );
   }
 }
